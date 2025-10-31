@@ -62,4 +62,31 @@ Evoluir do CRUD simples para um sistema com relacionamentos entre entidades. Est
 
 1. **RNF001**: A aplicação deve ser configurada para se conectar a um banco de dados PostgreSQL ou MySQL rodando em um container Docker.
 
-2. **RNF002**: A listagem de Posts deve ser paginada, aceitando parâmetros na URL como:
+2. **RNF002**: A listagem de Posts deve ser paginada, aceitando parâmetros na URL como: ?page=0&size=10&sort=dataDePublicacao,desc
+
+3. **RNF003**: A API deve retornar códigos de status HTTP apropriados para cada operação:
+- `201 Created` para criação
+- `204 No Content` para exclusão bem-sucedida
+- `200 OK` para consultas e atualizações bem-sucedidas
+
+---
+
+## Endpoints principais
+
+### Posts
+| Método | Endpoint | Descrição |
+|--------|---------|-----------|
+| POST | `/posts` | Criar um novo Post |
+| GET | `/posts` | Listar Posts paginados |
+| GET | `/posts/{id}` | Buscar Post por ID |
+| PUT | `/posts/{id}` | Atualizar Post existente |
+| DELETE | `/posts/{id}` | Excluir Post (com comentários em cascata) |
+
+### Comentários
+| Método | Endpoint | Descrição |
+|--------|---------|-----------|
+| POST | `/posts/{postId}/comentarios` | Adicionar comentário a um Post existente |
+| GET | `/posts/{postId}/comentarios` | Listar todos os comentários de um Post |
+
+---
+
